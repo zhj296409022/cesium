@@ -155,11 +155,11 @@ defineSuite([
         Ion.defaultAccessToken = defaultAccessToken;
     });
 
-    it('Calls base _makeRequest with expected options when resource no Accept header is already defined', function() {
+    it('Calls base _makeRequest with expected options when resource no Authorization header', function() {
         var originalOptions = {};
         var expectedOptions = {
             headers: {
-                Accept: '*/*;access_token=' + endpoint.accessToken
+                Authorization: 'Bearer ' + endpoint.accessToken
             }
         };
 
@@ -170,31 +170,15 @@ defineSuite([
         expect(_makeRequest).toHaveBeenCalledWith(expectedOptions);
     });
 
-    it('Calls base _makeRequest with expected options when resource Accept header is already defined', function() {
-        var originalOptions = {};
-        var expectedOptions = {
-            headers: {
-                Accept: 'application/json,*/*;access_token=' + endpoint.accessToken
-            }
-        };
-
-        var _makeRequest = spyOn(Resource.prototype, '_makeRequest');
-        var endpointResource = IonResource._createEndpointResource(assetId);
-        var resource = new IonResource(endpoint, endpointResource);
-        resource.headers.Accept = 'application/json';
-        resource._makeRequest(originalOptions);
-        expect(_makeRequest).toHaveBeenCalledWith(expectedOptions);
-    });
-
-    it('Calls base _makeRequest with expected options when options header.Accept is already defined', function() {
+    it('Calls base _makeRequest with expected options when options header.Authorization is already defined', function() {
         var originalOptions = {
             headers: {
-                Accept: 'application/json'
+                Authorization: 'Something Else'
             }
         };
         var expectedOptions = {
             headers: {
-                Accept: 'application/json,*/*;access_token=' + endpoint.accessToken
+                Authorization: 'Bearer ' + endpoint.accessToken
             }
         };
 
