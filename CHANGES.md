@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+### 1.64.0 - 2019-12-02
+
+* Updated knockout from 3.5.0 to 3.5.1.
+
 ### 1.63.1 - 2019-11-06
 
 ##### Fixes :wrench:
