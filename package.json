@@ -29,7 +29,7 @@
     "url": "https://github.com/AnalyticalGraphicsInc/cesium/issues",
     "email": "cesium-dev@googlegroups.com"
   },
-  "main": "index.js",
+  "main": "index.cjs",
   "module": "Source/Cesium.js",
   "type": "module",
   "dependencies": {
