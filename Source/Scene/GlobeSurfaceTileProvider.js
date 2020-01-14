@@ -1934,7 +1934,11 @@ import TileSelectionResult from './TileSelectionResult.js';
             command.vertexArray = surfaceTile.vertexArray || surfaceTile.fill.vertexArray;
             command.count = count;
             command.uniformMap = uniformMap;
+            /**
+             * shendi change
+             */
             command.pass = Pass.GLOBE;
+            //command.pass = Pass.TRANSLUCENT;
 
             if (tileProvider._debug.wireframe) {
                 createWireframeVertexArrayIfNecessary(context, tileProvider, tile);
