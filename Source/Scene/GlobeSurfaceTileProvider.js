@@ -50,6 +50,7 @@ import TerrainFillMesh from './TerrainFillMesh.js';
 import TerrainState from './TerrainState.js';
 import TileBoundingRegion from './TileBoundingRegion.js';
 import TileSelectionResult from './TileSelectionResult.js';
+import SDConfig from '../Shendi/SDConfig.js';
 
     /**
      * Provides quadtree tiles representing the surface of the globe.  This type is intended to be used
@@ -1921,7 +1922,11 @@ import TileSelectionResult from './TileSelectionResult.js';
             command.primitiveType = PrimitiveType.TRIANGLES;
             command.vertexArray = surfaceTile.vertexArray || surfaceTile.fill.vertexArray;
             command.uniformMap = uniformMap;
-            command.pass = Pass.GLOBE;
+            /**
+             * shendi change
+             */
+            //command.pass = Pass.GLOBE;
+            command.pass = SDConfig.subsurface ? Pass.TRANSLUCENT : Pass.GLOBE;
 
             if (tileProvider._debug.wireframe) {
                 createWireframeVertexArrayIfNecessary(context, tileProvider, tile);
